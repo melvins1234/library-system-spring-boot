@@ -1,18 +1,17 @@
 package com.library.sytem.library_system.users.infrastructure.persistence;
 
 import jakarta.annotation.Nullable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,11 +19,19 @@ import java.util.Date;
 class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(nullable = false)
     private String schoolId;
+
+    @NotNull
+    @Column(nullable = false)
     private String firstName;
+
+    @NotNull
+    @Column(nullable = false)
     private String lastName;
 
     @Nullable
@@ -32,12 +39,20 @@ class UserEntity {
     @Nullable
     private String suffix;
 
-    private Date birthDate;
+    @NotNull
+    @Column(nullable = false)
+    private LocalDate birthDate;
+
     @Nullable
-    private Date hiredDate;
+    private LocalDate hiredDate;
+
+    @NotNull
+    @Column(nullable = false)
     private String personalEmail;
+
     @Nullable
     private String phoneNumber;
+
     @Nullable
     private String telNumber;
 }

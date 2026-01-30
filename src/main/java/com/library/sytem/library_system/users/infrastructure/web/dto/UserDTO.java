@@ -1,6 +1,6 @@
 package com.library.sytem.library_system.users.infrastructure.web.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public record UserDTO (
     String schoold_id,
@@ -8,8 +8,8 @@ public record UserDTO (
     String last_name,
     String middle_name,
     String suffix,
-    Date birth_date,
-    Date hired_date,
+    LocalDate birth_date,
+    LocalDate hired_date,
     int status,
     String phone_number,
     String tel_number

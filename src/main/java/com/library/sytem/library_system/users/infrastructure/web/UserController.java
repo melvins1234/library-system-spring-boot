@@ -3,22 +3,22 @@ package com.library.sytem.library_system.users.infrastructure.web;
 import com.library.sytem.library_system.common.model.PagedResult;
 import com.library.sytem.library_system.users.UserService;
 import com.library.sytem.library_system.users.infrastructure.web.dto.UserDTO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 @Slf4j
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    @PostMapping()
+    @GetMapping
     PagedResult<UserDTO> getAllUsers(@RequestParam(name = "page", defaultValue = "1") int page) {
         log.info("Fetching users for page: {}", page);
-        return new PagedResult<UserDTO>();
+        return userService.getAllUsers(page);
     }
+
 }

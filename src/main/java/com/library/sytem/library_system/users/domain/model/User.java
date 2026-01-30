@@ -1,14 +1,16 @@
 package com.library.sytem.library_system.users.domain.model;
 
 import com.library.sytem.library_system.users.domain.vo.SchoolId;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
+@Getter
 public class User {
-    private String id;
-    private SchoolId schooolId;
+    private Long id;
+    private SchoolId schoolId;
     private String firstName;
     private String lastName;
     private String middleName;
@@ -44,7 +46,7 @@ public class User {
         }
 
         User user = new User();
-        user.schooolId = schoolId;
+        user.schoolId = schoolId;
         user.firstName = firstName;
         user.lastName = lastName;
         user.middleName = middleName;
